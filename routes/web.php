@@ -9,8 +9,11 @@ Route::get('/', function () {
     return view("frontend.home");
 });
 
+
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view("admin_panel.admin_dashbord");
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
