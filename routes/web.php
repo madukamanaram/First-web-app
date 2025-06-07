@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\SliderController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,5 +22,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/sliderindex', [SliderController::class, 'index'])->name('slider.index');
+    Route::post('/saveslider', [SliderController::class, 'storeslider'])->name('slider.store');
+});
+
+// Route::get('/testslider', [SliderController::class, 'index']);
+
+
 
 require __DIR__.'/auth.php';
